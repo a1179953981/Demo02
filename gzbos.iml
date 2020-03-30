@@ -18,10 +18,18 @@
       <configuration>
         <datasource-map>
           <unit-entry name="a.xml" value="c5438d39-121a-4382-8e77-eb5a4ab0c981" />
-          <unit-entry name="hibernate.cfg.xml" />
+          <unit-entry name="hibernate.cfg.xml" value="f0aa9a8e-482c-4e20-a6d6-138d5bb86511" />
+          <unit-entry name="sessionFactory" value="f0aa9a8e-482c-4e20-a6d6-138d5bb86511" />
         </datasource-map>
         <naming-strategy-map />
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/config/hibernate.cfg.xml" />
+      </configuration>
+    </facet>
+    <facet type="Spring" name="Spring">
+      <configuration>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/config/beans.xml</file>
+        </fileset>
       </configuration>
     </facet>
   </component>

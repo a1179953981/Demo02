@@ -1,6 +1,7 @@
 package com.test;
 
 import com.gyf.bos.dao.IUserDao;
+import com.gyf.bos.model.AdminEntity;
 import com.gyf.bos.model.User;
 import com.gyf.bos.service.IUserService;
 import org.junit.Test;
@@ -21,8 +22,8 @@ public class Demo02 {
     @Test
     public void test1(){
         //1.创建User
-        User user = new User();
-        user.setUsername("gyf");
+        AdminEntity user = new AdminEntity();
+        user.setAdmin("gyf");
         user.setPassword("123");
 
         //2.保存

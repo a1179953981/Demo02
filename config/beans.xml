@@ -43,7 +43,7 @@
         <!-- hibernate映射文件-->
         <property name="mappingDirectoryLocations">
             <list>
-               <value>classpath:com/gyf/bos/model</value>
+                <value>classpath:com/gyf/bos/model</value>
             </list>
         </property>
     </bean>

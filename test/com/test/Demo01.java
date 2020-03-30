@@ -1,6 +1,7 @@
 package com.test;
 
 import com.gyf.bos.dao.IUserDao;
+import com.gyf.bos.model.AdminEntity;
 import com.gyf.bos.model.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -40,7 +41,7 @@ public class Demo01 {
         System.out.println(user1);*/
 
         //获取所有用户
-        List<User> users = userDao.findAll();
+        List<AdminEntity> users = userDao.findAll();
         System.out.println(users);
     }
 }

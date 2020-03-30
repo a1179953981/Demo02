@@ -1,6 +1,7 @@
 package com.gyf.bos.web.action;
 
-import com.gyf.bos.model.User;
+import com.gyf.bos.model.AdminEntity;
+//import com.gyf.bos.model.User;
 import com.gyf.bos.service.IUserService;
 import com.gyf.bos.web.action.base.BaseAction;
 import org.apache.struts2.ServletActionContext;
@@ -10,7 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class UserAction extends BaseAction<User> {
+public class UserAction extends BaseAction<AdminEntity> {
 
     @Autowired
     private IUserService userService;
@@ -18,7 +19,7 @@ public class UserAction extends BaseAction<User> {
     public String login(){
 
         //1.获取参数
-        String username = getModel().getUsername();
+        String username = getModel().getAdmin();
         String password = getModel().getPassword();
 
         //request
@@ -27,7 +28,7 @@ public class UserAction extends BaseAction<User> {
         String clientCheckCode = request.getParameter("checkcode");
         if(serverCheckCode.equalsIgnoreCase(clientCheckCode)){//验证码正确
             //2.调用service
-            User user = userService.login(username,password);
+            AdminEntity user= userService.login(username,password);
             //3.判断登录状态
             if(user != null){
                 //System.out.println("登录成功");
@@ -78,8 +79,8 @@ public class UserAction extends BaseAction<User> {
         String newPwd = getModel().getPassword();
 
         //2.获取用户id
-        User loginUser = (User)request .getSession().getAttribute("loginUser");
-        String userId = loginUser.getId();
+        AdminEntity loginUser = (AdminEntity) request .getSession().getAttribute("loginUser");
+        String userId = loginUser.getAdmin();
 
         //3.调用service
         userService.modifyPassword(newPwd,userId);

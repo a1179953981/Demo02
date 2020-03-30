@@ -1,6 +1,7 @@
 package com.gyf.bos.service.impl;
 
 import com.gyf.bos.dao.IUserDao;
+import com.gyf.bos.model.AdminEntity;
 import com.gyf.bos.model.User;
 import com.gyf.bos.service.IUserService;
 import com.gyf.bos.service.base.BaseServiceImpl;
@@ -14,18 +15,18 @@ import java.util.List;
 
 @Service
 @Transactional//事务是由事务管理器来实现
-public class UserServiceImpl extends BaseServiceImpl<User> implements IUserService {
+public class UserServiceImpl extends BaseServiceImpl<AdminEntity> implements IUserService {
 
     @Autowired
     private IUserDao userDao;
     @Override
-    public User findByTel(String tel) {
+    public AdminEntity findByTel(String tel) {
         return null;
     }
 
       @Override
-    public User login(String username, String password) {
-        return userDao.find(username, MD5Utils.text2md5(password));
+    public AdminEntity login(String username, String password) {
+        return userDao.find(username, password);
     }
 
     @Override
@@ -37,28 +38,28 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements IUserServi
     }
 
     @Override
-    public void save(User entity) {
+    public void save(AdminEntity entity) {
 
         userDao.save(entity);
     }
 
     @Override
-    public void delete(User entity) {
+    public void delete(AdminEntity entity) {
         userDao.delete(entity);
     }
 
     @Override
-    public void update(User entity) {
+    public void update(AdminEntity entity) {
         userDao.update(entity);
     }
 
     @Override
-    public User find(Serializable id) {
+    public AdminEntity find(Serializable id) {
         return userDao.find(id);
     }
 
     @Override
-    public List<User> findAll() {
+    public List<AdminEntity> findAll() {
         return userDao.findAll();
     }
 }

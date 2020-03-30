@@ -4,12 +4,25 @@
     "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
   <session-factory>
-    <property name="connection.url"/>
-    <property name="connection.driver_class"/>
-    <!-- <property name="connection.username"/> -->
-    <!-- <property name="connection.password"/> -->
-
-    <!-- DB schema will be updated if needed -->
-    <!-- <property name="hbm2ddl.auto">update</property> -->
+    <property name="connection.url">jdbc:mysql://203.195.135.48:3306</property>
+    <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+    <mapping class="com.gyf.bos.model.MonitorEntity"/>
+    <mapping resource="com/gyf/bos/model/MonitorEntity.hbm.xml"/>
+    <mapping resource="com/gyf/bos/model/UserEntity.hbm.xml"/>
+    <mapping class="com.gyf.bos.model.UserEntity"/>
+    <mapping resource="com/gyf/bos/model/MonitorEntity.hbm.xml"/>
+    <mapping resource="com/gyf/bos/model/UserEntity.hbm.xml"/>
+    <mapping resource="com/gyf/bos/model/AdminEntity.hbm.xml"/>
+    <mapping class="com.gyf.bos.model.AdminEntity"/>
+    <mapping resource="com/gyf/bos/model/ComputerHostEntity.hbm.xml"/>
+    <mapping class="com.gyf.bos.model.ComputerHostEntity"/>
+    <mapping resource="com/gyf/bos/model/UserEntity.hbm.xml"/>
+    <mapping resource="com/gyf/bos/model/UserEntity.hbm.xml"/>
+    <mapping class="com.gyf.bos.UserEntity"/>
+      <mapping resource="UserEntity1.hbm.xml"/>
+      <mapping class="com.gyf.bos.model.UserEntity1"/>
+    <mapping resource="UserEntity2.hbm.xml"/>
+    <mapping class="com.gyf.bos.model.UserEntity2"/>
+    <mapping class="com.gyf.bos.UserEntity2"/>
   </session-factory>
 </hibernate-configuration>

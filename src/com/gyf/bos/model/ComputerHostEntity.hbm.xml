@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.gyf.bos.model.ComputerHostEntity" table="computer_host" schema="asset">
+        <id name="no" column="No"/>
+        <property name="brand" column="brand"/>
+        <property name="cpu" column="cpu"/>
+        <property name="rom" column="Rom"/>
+        <property name="ram" column="Ram"/>
+        <property name="type" column="type"/>
+        <property name="mac" column="Mac"/>
+        <property name="status" column="Status"/>
+        <property name="procurementDate" column="Procurement_date"/>
+        <property name="notes" column="Notes"/>
+    </class>
+</hibernate-mapping>

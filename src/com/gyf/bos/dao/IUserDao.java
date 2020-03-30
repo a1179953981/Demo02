@@ -1,11 +1,12 @@
 package com.gyf.bos.dao;
 
 import com.gyf.bos.dao.base.IBaseDao;
-import com.gyf.bos.model.User;
+import com.gyf.bos.model.AdminEntity;
+//import com.gyf.bos.model.User;
 
-public interface IUserDao extends IBaseDao<User> {
+public interface IUserDao extends IBaseDao<AdminEntity> {
 
-    public User findByEmail(String email);
+    public AdminEntity findByEmail(String email);
 
-    public User find(String username,String password);
+    public AdminEntity find(String username, String password);
 }

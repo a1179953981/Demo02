@@ -1,7 +1,7 @@
 package com.gyf.bos.dao.base;
 
 import com.gyf.bos.model.PageBean;
-import com.gyf.bos.model.Region;
+//import com.gyf.bos.model.Region;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.criterion.DetachedCriteria;

@@ -1,14 +1,15 @@
 package com.gyf.bos.service;
 
-import com.gyf.bos.model.User;
+import com.gyf.bos.model.AdminEntity;
+//import com.gyf.bos.model.User;
 import com.gyf.bos.service.base.IBaseService;
 
-public interface IUserService extends IBaseService<User>{
+public interface IUserService extends IBaseService<AdminEntity>{
 
     //特有的业务方法
-    public User findByTel(String tel);
+    public AdminEntity findByTel(String tel);
 
-    public User login(String username,String password);
+    public AdminEntity login(String username, String password);
 
     public void modifyPassword(String newPwd,String userId);
 }
