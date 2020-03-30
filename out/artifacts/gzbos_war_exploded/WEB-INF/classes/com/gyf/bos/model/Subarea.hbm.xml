@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.gyf.bos.model.Subarea" table="bc_subarea" schema="bos">
+        <id name="id" column="id">
+            <generator class="assigned"/>
+        </id>
+        <property name="addresskey" column="addresskey"/>
+        <property name="startnum" column="startnum"/>
+        <property name="endnum" column="endnum"/>
+        <property name="single" column="single"/>
+        <property name="position" column="position"/>
+
+        <!--多对一映射-->
+        <many-to-one name="region"
+                     lazy="false"
+                     column="region_id"
+                     class="com.gyf.bos.model.Region"></many-to-one>
+
+        <many-to-one name="decidedzone"
+                     column="decidedzone_id"
+                     class="com.gyf.bos.model.Decidedzone"></many-to-one>
+
+    </class>
+</hibernate-mapping>
