@@ -37,7 +37,7 @@
 
         <!--用户模块-->
         <action name="userAction_*" class="com.gyf.bos.web.action.UserAction" method="{1}">
-            <result name="home">/WEB-INF/pages/common/index.jsp</result>
+            <result name="home">WEB-INF/pages/common/index.jsp</result>
             <result name="loginfailure">/login.jsp</result>
         </action>
 

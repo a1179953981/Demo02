@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>宅急送BOS主界面</title>
+<title>铠麒IT资产管理</title>
 <!-- 导入jquery核心类库 -->
 <script type="text/javascript"
 	src="${pageContext.request.contextPath }/js/jquery-1.8.3.js"></script>
@@ -72,15 +72,15 @@
 			}
 		});
 		
-		// 页面加载后 右下角 弹出窗口
-		/**************/
-		window.setTimeout(function(){
-			$.messager.show({
-				title:"消息提示",
-				msg:'欢迎登录，超级管理员！ <a href="javascript:void" onclick="top.showAbout();">联系管理员</a>',
-				timeout:5000
-			});
-		},3000);
+		// // 页面加载后 右下角 弹出窗口
+		// /**************/
+		// window.setTimeout(function(){
+		// 	$.messager.show({
+		// 		title:"消息提示",
+		// 		msg:'欢迎登录，超级管理员！ <a href="javascript:void" onclick="top.showAbout();">联系管理员</a>',
+		// 		timeout:5000
+		// 	});
+		// },3000);
 		/*************/
 		
 		$("#btnCancel").click(function(){
@@ -186,13 +186,13 @@
 <body class="easyui-layout">
 	<div data-options="region:'north',border:false"
 		style="height:80px;padding:10px;background:url('./images/header_bg.png') no-repeat right;">
-		<div>
-			<img src="${pageContext.request.contextPath }/images/logo.png"
-				border="0">
-		</div>
+<%--		<div>--%>
+<%--			<img src="${pageContext.request.contextPath }/images/logo.png"--%>
+<%--				border="0">--%>
+<%--		</div>--%>
 		<div id="sessionInfoDiv"
 			style="position: absolute;right: 5px;top:10px;">
-			[<strong>${loginUser.username}</strong>]，欢迎你！
+			[<strong>${loginUser.admin}</strong>]，欢迎你！
 		</div>
 		<div style="position: absolute; right: 5px; bottom: 10px; ">
 			<a href="javascript:void(0);" class="easyui-menubutton"
@@ -235,24 +235,24 @@
 			</div>
 		</div>
 	</div>
-	<div data-options="region:'south',border:false"
-		style="height:50px;padding:10px;background:url('./images/header_bg.png') no-repeat right;">
-		<table style="width: 100%;">
-			<tbody>
-				<tr>
-					<td style="width: 300px;">
-						<div style="color: #999; font-size: 8pt;">
-							郭永峰IT教育工作室-QQ:1030103135 | Powered by guoyongfeng</a>
-						</div>
-					</td>
-					<td style="width: *;" class="co1"><span id="online"
-						style="background: url(${pageContext.request.contextPath }/images/online.png) no-repeat left;padding-left:18px;margin-left:3px;font-size:8pt;color:#005590;">在线人数:1</span>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
-	
+<%--	<div data-options="region:'south',border:false"--%>
+<%--		style="height:50px;padding:10px;background:url('./images/header_bg.png') no-repeat right;">--%>
+<%--		<table style="width: 100%;">--%>
+<%--			<tbody>--%>
+<%--				<tr>--%>
+<%--					<td style="width: 300px;">--%>
+<%--						<div style="color: #999; font-size: 8pt;">--%>
+<%--							郭永峰IT教育工作室-QQ:1030103135 | Powered by guoyongfeng</a>--%>
+<%--						</div>--%>
+<%--					</td>--%>
+<%--					<td style="width: *;" class="co1"><span id="online"--%>
+<%--						style="background: url(${pageContext.request.contextPath }/images/online.png) no-repeat left;padding-left:18px;margin-left:3px;font-size:8pt;color:#005590;">在线人数:1</span>--%>
+<%--					</td>--%>
+<%--				</tr>--%>
+<%--			</tbody>--%>
+<%--		</table>--%>
+<%--	</div>--%>
+<%--	--%>
 	<!--修改密码窗口-->
     <div id="editPwdWindow" class="easyui-window" title="修改密码" collapsible="false" minimizable="false" modal="true" closed="true" resizable="false"
         maximizable="false" icon="icon-save"  style="width: 300px; height: 160px; padding: 5px;

@@ -62,7 +62,7 @@ input[type=password] {
 					action="${pageContext.request.contextPath }/userAction_login.action">
 					<div id="idInputLine" class="loginFormIpt showPlaceholder"
 						style="margin-top: 5px;">
-						<input id="loginform:idInput" type="text" name="username"
+						<input id="loginform:idInput" type="text" name="admin"
 							class="loginFormTdIpt" maxlength="50" />
 						<label for="idInput" class="placeholder" id="idPlaceholder">帐号：</label>
 					</div>

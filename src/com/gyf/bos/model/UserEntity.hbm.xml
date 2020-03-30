@@ -6,7 +6,7 @@
 
     <class name="com.gyf.bos.model.UserEntity" table="User" schema="asset">
         <id name="name" column="name"/>
-        <property name="dateOfEntry" />
+        <property name="dateOfEntry" column="Date_of_entry" />
         <property name="position" column="position"/>
         <property name="departments" column="departments"/>
     </class>

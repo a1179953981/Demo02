@@ -19,7 +19,7 @@ public class UserAction extends BaseAction<AdminEntity> {
     public String login(){
 
         //1.获取参数
-        String username = getModel().getAdmin();
+        String admin = getModel().getAdmin();
         String password = getModel().getPassword();
 
         //request
@@ -28,7 +28,7 @@ public class UserAction extends BaseAction<AdminEntity> {
         String clientCheckCode = request.getParameter("checkcode");
         if(serverCheckCode.equalsIgnoreCase(clientCheckCode)){//验证码正确
             //2.调用service
-            AdminEntity user= userService.login(username,password);
+            AdminEntity user= userService.login(admin,password);
             //3.判断登录状态
             if(user != null){
                 //System.out.println("登录成功");
