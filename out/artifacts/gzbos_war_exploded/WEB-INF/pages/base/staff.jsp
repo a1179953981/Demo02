@@ -109,48 +109,31 @@
 	},{
 		field : 'name',
 		title : '姓名',
-		width : 120,
+		width : 400,
 		align : 'center'
 	}, {
-		field : 'telephone',
-		title : '手机号',
-		width : 120,
+		field : 'position',
+		title : '职位',
+		width : 400,
 		align : 'center'
 	}, {
-		field : 'haspda',
-		title : '是否有PDA',
-		width : 120,
+		field : 'departments',
+		title : '所属部门',
+		width : 400,
 		align : 'center',
-		formatter : function(data,row, index){
-			if(data=="1"){
-				return "有";
-			}else{
-				return "无";
-			}
-		}
 	}, {
-		field : 'deltag',
-		title : '是否作废',
-		width : 120,
+		field : 'dateOfEntry',
+		title : '入职日期',
+		width : 400,
 		align : 'center',
-		formatter : function(data,row, index){
-			if(data=="0"){
-				return "正常使用"
-			}else{
-				return "已作废";
-			}
-		}
-	}, {
-		field : 'standard',
-		title : '取派标准',
-		width : 120,
-		align : 'center'
-	}, {
-		field : 'station',
-		title : '所谓单位',
-		width : 200,
-		align : 'center'
-	} ] ];
+		// formatter : function(data,row, index){
+		// 	if(data=="0"){
+		// 		return "正常使用"
+		// 	}else{
+		// 		return "已作废";
+		// 	}
+		// }
+	}] ];
 	
 	$(function(){
 	    //添加一个表单的手机校验的规则
@@ -174,7 +157,7 @@
 			rownumbers : true,
 			striped : true,
 			pageSize:5,
-			pageList: [5,10,15],
+			pageList: [25,30,35],
 			pagination : true,
 			toolbar : toolbar,
 			url : "${pageContext.request.contextPath}/staffAction_pageQuery.action",

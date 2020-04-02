@@ -68,34 +68,45 @@
 		field : 'id',
 		checkbox : true,
 	},{
-		field : 'province',
-		title : '省',
-		width : 120,
+		field : 'no',
+		title : 'No',
+		width : 266,
 		align : 'center'
 	}, {
-		field : 'city',
-		title : '市',
-		width : 120,
+		field : 'brand',
+		title : '品牌',
+		width : 266,
 		align : 'center'
 	}, {
-		field : 'district',
-		title : '区',
-		width : 120,
+		field : 'size',
+		title : '尺寸',
+		width : 266,
 		align : 'center'
 	}, {
-		field : 'postcode',
-		title : '邮编',
-		width : 120,
+		field : 'userEntity.name',
+		title : '使用人',
+		width : 266,
+		align : 'center',
+		formatter : function(data,row ,index){
+			if (row.userEntity!=null){
+				return row.userEntity.name;
+			}
+			else
+				return null
+
+		}
+		// formatter : function(data,row ,index){
+		// 	return userEntity.name;
+		// }
+	}, {
+		field : 'starus',
+		title : '状态',
+		width : 220,
 		align : 'center'
 	}, {
-		field : 'shortcode',
-		title : '简码',
-		width : 120,
-		align : 'center'
-	}, {
-		field : 'citycode',
-		title : '城市编码',
-		width : 200,
+		field : 'note',
+		title : '备注',
+		width : 476,
 		align : 'center'
 	} ] ];
 	
@@ -110,7 +121,7 @@
 			border : false,
 			rownumbers : true,
 			striped : true,
-			pageList: [5,10,15],
+			pageList: [25,30,35],
 			pagination : true,
 			toolbar : toolbar,
 			url : "${pageContext.request.contextPath}/regionAction_pageQuery.action",

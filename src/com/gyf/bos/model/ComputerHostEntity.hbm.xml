@@ -15,5 +15,10 @@
         <property name="status" column="Status"/>
         <property name="procurementDate" column="Procurement_date"/>
         <property name="notes" column="Notes"/>
+        <many-to-one name="userEntity"
+                     not-found="ignore"
+                     lazy="false"
+                     column="User_Name"
+                     class="com.gyf.bos.model.UserEntity"></many-to-one>
     </class>
 </hibernate-mapping>

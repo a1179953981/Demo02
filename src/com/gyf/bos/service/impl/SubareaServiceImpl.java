@@ -2,6 +2,7 @@ package com.gyf.bos.service.impl;
 
 import com.gyf.bos.dao.IRegionDao;
 import com.gyf.bos.dao.ISubareaDao;
+import com.gyf.bos.model.ComputerHostEntity;
 import com.gyf.bos.model.PageBean;
 import com.gyf.bos.model.Region;
 import com.gyf.bos.model.Subarea;
@@ -19,43 +20,43 @@ import java.util.List;
 
 @Service
 @Transactional//事务是由事务管理器来实现
-public class SubareaServiceImpl extends BaseServiceImpl<Subarea> implements ISubareaService {
+public class SubareaServiceImpl extends BaseServiceImpl<ComputerHostEntity> implements ISubareaService {
 
 
     @Autowired
     private ISubareaDao subareaDao;
     @Override
-    public void save(Subarea entity) {
+    public void save(ComputerHostEntity entity) {
         subareaDao.save(entity);
     }
 
     @Override
-    public void delete(Subarea entity) {
+    public void delete(ComputerHostEntity entity) {
 
     }
 
     @Override
-    public void update(Subarea entity) {
+    public void update(ComputerHostEntity entity) {
 
     }
 
     @Override
-    public Subarea find(Serializable id) {
+    public ComputerHostEntity find(Serializable id) {
         return null;
     }
 
     @Override
-    public List<Subarea> findAll() {
+    public List<ComputerHostEntity> findAll() {
         return subareaDao.findAll();
     }
 
     @Override
-    public void pageQuery(PageBean<Subarea> pb) {
+    public void pageQuery(PageBean<ComputerHostEntity> pb) {
         subareaDao.pageQuery(pb);
     }
 
     @Override
-    public List<Subarea> findAllWithUnbind() {
+    public List<ComputerHostEntity> findAllWithUnbind() {
         DetachedCriteria dc = DetachedCriteria.forClass(Subarea.class);
         dc.add(Restrictions.isNull("decidedzone"));
         return subareaDao.findAllByDetachedCriteria(dc);

@@ -3,6 +3,7 @@ package com.gyf.bos.web.action;
 import com.gyf.bos.model.PageBean;
 import com.gyf.bos.model.Staff;
 import com.gyf.bos.model.User;
+import com.gyf.bos.model.UserEntity;
 import com.gyf.bos.service.IStaffService;
 import com.gyf.bos.service.IUserService;
 import com.gyf.bos.web.action.base.BaseAction;
@@ -17,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-public class StaffAction extends BaseAction<Staff> {
+public class StaffAction extends BaseAction<UserEntity> {
 
     @Autowired
     private IStaffService staffService;
@@ -81,14 +82,9 @@ public class StaffAction extends BaseAction<Staff> {
 
     public void listJson() throws IOException {
         //在职员工
-        List<Staff> list = staffService.findAllWithNoDelete();
+        List<UserEntity> list = staffService.findAllWithNoDelete();
 
-       /* private String telephone;//手机
-        private String haspda;//是否有台设备 0:无 1：有
-        private String deltag = "0";//删除标志 0:正常在职 1：离职
-        private String station;//所属单位
-        private String standard;//收费标准*/
 
-       responseJson(list,new String[]{"telephone","haspda","deltag","station","standard"});
+       responseJson(list,new String[]{"name","position","departments","dateOfEntry"});
     }
 }

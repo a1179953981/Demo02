@@ -66,4 +66,14 @@ public class UserEntity {
     public void setDateOfEntry(String dateOfEntry) {
         this.dateOfEntry = dateOfEntry;
     }
+
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "name='" + name + '\'' +
+                ", position='" + position + '\'' +
+                ", departments='" + departments + '\'' +
+                ", dateOfEntry='" + dateOfEntry + '\'' +
+                '}';
+    }
 }

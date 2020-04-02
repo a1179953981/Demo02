@@ -1,5 +1,6 @@
 package com.gyf.bos.web.action;
 
+import com.gyf.bos.model.MonitorEntity;
 import com.gyf.bos.model.PageBean;
 import com.gyf.bos.model.Region;
 import com.gyf.bos.model.Staff;
@@ -25,7 +26,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RegionAction extends BaseAction<Region>{
+public class RegionAction extends BaseAction<MonitorEntity>{
 
 
     @Autowired
@@ -36,52 +37,52 @@ public class RegionAction extends BaseAction<Region>{
         this.excelFile = excelFile;
     }
 
-    public String importExcel() throws Exception {
-        System.out.println(excelFile.getAbsolutePath());
-        //1.解析excel文件中数据
-        //1.1创建Workbook
-        HSSFWorkbook  workbook = new HSSFWorkbook(new FileInputStream(excelFile));
-
-        //1.2 获取sheet
-        Sheet sheet = workbook.getSheetAt(0);
-
-        //1.3遍历里面数据
-        List<Region> regions = new ArrayList<Region>();
-        for(Row row : sheet){
-            String id = row.getCell(0).getStringCellValue();
-            String province = row.getCell(1).getStringCellValue();
-            String city=  row.getCell(2).getStringCellValue();
-            String district = row.getCell(3).getStringCellValue();
-            String postcode = row.getCell(4).getStringCellValue();
-
-            //根据中文生成城市编码
-            String citycode = StringUtils.join(PinYin4jUtils.stringToPinyin(city),"");
-
-            //根据中文生成简码
-            String cityTmp = city.substring(0,city.length() - 1);
-            String districtTmp = district.substring(0,district.length() - 1);
-            String[] cityStrs =  PinYin4jUtils.getHeadByString(cityTmp);
-            String[] districtStrs = PinYin4jUtils.getHeadByString(districtTmp);
-            String shortcode = StringUtils.join(cityStrs,"") + StringUtils.join(districtStrs,"");
-
-            //封装成Region模型
-            Region region = new Region(id,province,city,district,postcode);
-            region.setCitycode(citycode);
-            region.setShortcode(shortcode);
-            regions.add(region);
-            System.out.println("----------------------------------");
-        }
-
-        regions.remove(0);//移除第一行的标题数据
-
-        //调用service
-       regionService.saveAll(regions);
-
-        //响应
-       responseStr("success");
-
-       return NONE;
-   }
+//    public String importExcel() throws Exception {
+//        System.out.println(excelFile.getAbsolutePath());
+//        //1.解析excel文件中数据
+//        //1.1创建Workbook
+//        HSSFWorkbook  workbook = new HSSFWorkbook(new FileInputStream(excelFile));
+//
+//        //1.2 获取sheet
+//        Sheet sheet = workbook.getSheetAt(0);
+//
+//        //1.3遍历里面数据
+//        List<MonitorEntity> regions = new ArrayList<MonitorEntity>();
+//        for(Row row : sheet){
+//            String id = row.getCell(0).getStringCellValue();
+//            String province = row.getCell(1).getStringCellValue();
+//            String city=  row.getCell(2).getStringCellValue();
+//            String district = row.getCell(3).getStringCellValue();
+//            String postcode = row.getCell(4).getStringCellValue();
+//
+//            //根据中文生成城市编码
+//            String citycode = StringUtils.join(PinYin4jUtils.stringToPinyin(city),"");
+//
+//            //根据中文生成简码
+//            String cityTmp = city.substring(0,city.length() - 1);
+//            String districtTmp = district.substring(0,district.length() - 1);
+//            String[] cityStrs =  PinYin4jUtils.getHeadByString(cityTmp);
+//            String[] districtStrs = PinYin4jUtils.getHeadByString(districtTmp);
+//            String shortcode = StringUtils.join(cityStrs,"") + StringUtils.join(districtStrs,"");
+//
+//            //封装成Region模型
+//            MonitorEntity region = new MonitorEntity(no,brand,city,district,postcode);
+//            region.setCitycode(citycode);
+//            region.setShortcode(shortcode);
+//            regions.add(region);
+//            System.out.println("----------------------------------");
+//        }
+//
+//        regions.remove(0);//移除第一行的标题数据
+//
+//        //调用service
+//       regionService.saveAll(regions);
+//
+//        //响应
+//       responseStr("success");
+//
+//       return NONE;
+//   }
 
     @Override
     public String save() {
@@ -114,18 +115,18 @@ public class RegionAction extends BaseAction<Region>{
         regionService.pageQuery(pb);
 
         //3.返回json数据
-        responseJson(pb,new String[]{"currentPage","pageSize","detachedCriteria","subareas"});
+        responseJson(pb,new String[]{"currentPage","pageSize","detachedCriteria"});
 
     }
 
     public void listJson() throws IOException {
-        // 查询所有区域
-        List<Region> regions = regionService.findAll();
-
-        //返回json数据
-        /**
-         *转json不要转subareas字段，否则会出现死循环
-         */
-        responseJson(regions,new String[]{"subareas"});
+//        // 查询所有区域
+//        List<MonitorEntity> regions = regionService.findAllWithNoDelete();
+//
+//        //返回json数据
+//        /**
+//         *转json不要转subareas字段，否则会出现死循环
+//         */
+//        responseJson(regions,new String[]{"no","brand","size","note","starus"});
     }
 }

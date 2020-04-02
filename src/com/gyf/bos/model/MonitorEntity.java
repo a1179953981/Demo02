@@ -6,15 +6,16 @@ import java.util.Objects;
 @Entity
 @Table(name = "Monitor", schema = "asset", catalog = "")
 public class MonitorEntity {
-    private int no;
+
+    private String no;
 
     @Id
     @Column(name = "No")
-    public int getNo() {
+    public String getNo() {
         return no;
     }
 
-    public void setNo(int no) {
+    public void setNo(String no) {
         this.no = no;
     }
 
@@ -30,15 +31,15 @@ public class MonitorEntity {
         this.brand = brand;
     }
 
-    private Integer size;
+    private String size;
 
     @Basic
     @Column(name = "Size")
-    public Integer getSize() {
+    public String getSize() {
         return size;
     }
 
-    public void setSize(Integer size) {
+    public void setSize(String size) {
         this.size = size;
     }
 
@@ -54,6 +55,18 @@ public class MonitorEntity {
         this.note = note;
     }
 
+    private UserEntity userEntity;
+
+    @Basic
+    @Column(name = "User_Name")
+    public UserEntity getUserEntity() {
+        return userEntity;
+    }
+
+    public void setUserEntity(UserEntity userEntity) {
+        this.userEntity = userEntity;
+    }
+
     private String starus;
 
     @Basic
@@ -67,19 +80,13 @@ public class MonitorEntity {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        MonitorEntity that = (MonitorEntity) o;
-        return no == that.no &&
-                Objects.equals(brand, that.brand) &&
-                Objects.equals(size, that.size) &&
-                Objects.equals(note, that.note) &&
-                Objects.equals(starus, that.starus);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(no, brand, size, note, starus);
+    public String toString() {
+        return "MonitorEntity{" +
+                "no=" + no +
+                ", brand='" + brand + '\'' +
+                ", size=" + size +
+                ", note='" + note + '\'' +
+                ", starus='" + starus + '\'' +
+                '}';
     }
 }

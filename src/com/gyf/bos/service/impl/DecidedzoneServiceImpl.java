@@ -3,10 +3,7 @@ package com.gyf.bos.service.impl;
 import com.gyf.bos.dao.IDecidedzoneDao;
 import com.gyf.bos.dao.IRegionDao;
 import com.gyf.bos.dao.ISubareaDao;
-import com.gyf.bos.model.Decidedzone;
-import com.gyf.bos.model.PageBean;
-import com.gyf.bos.model.Region;
-import com.gyf.bos.model.Subarea;
+import com.gyf.bos.model.*;
 import com.gyf.bos.service.IDecidedzoneService;
 import com.gyf.bos.service.IRegionService;
 import com.gyf.bos.service.base.BaseServiceImpl;
@@ -54,14 +51,14 @@ public class DecidedzoneServiceImpl extends BaseServiceImpl<Decidedzone> impleme
     @Override
     public void save(Decidedzone dz, String[] subareaIds) {
             //.....
-        //1.添加分区
-        decidedzoneDao.save(dz);
-
-        //2.更新分区的decided_id
-        for(String subareaId : subareaIds ){
-            Subarea subarea = subareaDao.find(subareaId);
-            subarea.setDecidedzone(dz);
-        }
+//        //1.添加分区
+//        decidedzoneDao.save(dz);
+//
+//        //2.更新分区的decided_id
+//        for(String subareaId : subareaIds ){
+//            ComputerHostEntity subarea = subareaDao.find(subareaId);
+//            ComputerHostEntity.setDecidedzone(dz);
+//        }
     }
 
     @Override

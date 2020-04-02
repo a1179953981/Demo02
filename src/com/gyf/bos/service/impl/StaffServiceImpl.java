@@ -5,6 +5,7 @@ import com.gyf.bos.dao.IUserDao;
 import com.gyf.bos.model.PageBean;
 import com.gyf.bos.model.Staff;
 import com.gyf.bos.model.User;
+import com.gyf.bos.model.UserEntity;
 import com.gyf.bos.service.IStaffService;
 import com.gyf.bos.service.IUserService;
 import com.gyf.bos.service.base.BaseServiceImpl;
@@ -20,51 +21,50 @@ import java.util.List;
 
 @Service
 @Transactional//事务是由事务管理器来实现
-public class StaffServiceImpl extends BaseServiceImpl<Staff> implements IStaffService {
+public class StaffServiceImpl extends BaseServiceImpl<UserEntity> implements IStaffService {
 
 
     @Autowired
     private IStaffDao staffDao;
 
     @Override
-    public void save(Staff entity) {
+    public void save(UserEntity entity) {
         staffDao.save(entity);
     }
 
     @Override
-    public void delete(Staff entity) {
+    public void delete(UserEntity entity) {
         staffDao.delete(entity);
     }
 
     @Override
-    public void update(Staff entity) {
+    public void update(UserEntity entity) {
         //实际可以不写，写也没有关系
         //staffDao.update(entity);
 
        //1.根据id从数据库获取数据【持久状态-session有缓存，有id】
-        Staff staff = staffDao.find(entity.getId());
+        UserEntity staff = staffDao.find(entity.getName());
 
         //2.更新数据库的数据
         staff.setName(entity.getName());
-        staff.setTelephone(entity.getTelephone());
-        staff.setStation(entity.getStation());
-        staff.setHaspda(entity.getHaspda());
-        staff.setStandard(entity.getStandard());
+        staff.setPosition(entity.getPosition());
+        staff.setDepartments(entity.getDepartments());
+        staff.setDateOfEntry(entity.getDateOfEntry());
         System.out.println("数据库：" + staff);
     }
 
     @Override
-    public Staff find(Serializable id) {
+    public UserEntity find(Serializable id) {
         return   staffDao.find(id);
     }
 
     @Override
-    public List<Staff> findAll() {
+    public List<UserEntity> findAll() {
         return staffDao.findAll();
     }
 
     @Override
-    public void pageQuery(PageBean<Staff> pb) {
+    public void pageQuery(PageBean<UserEntity> pb) {
         staffDao.pageQuery(pb);
     }
 
@@ -82,7 +82,7 @@ public class StaffServiceImpl extends BaseServiceImpl<Staff> implements IStaffSe
     }
 
     @Override
-    public List<Staff> findAllWithNoDelete() {
+    public List<UserEntity> findAllWithNoDelete() {
         //离线查询对象
         DetachedCriteria dc = DetachedCriteria.forClass(Staff.class);
         dc.add(Restrictions.eq("deltag","0"));

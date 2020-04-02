@@ -6,24 +6,36 @@ import java.util.Objects;
 @Entity
 @Table(name = "computer_host", schema = "asset", catalog = "")
 public class ComputerHostEntity {
-    private int no;
+    private String no;
     private String brand;
     private String cpu;
-    private Integer rom;
-    private Integer ram;
+    private String rom;
+    private String ram;
     private String type;
     private String mac;
     private int status;
     private String procurementDate;
     private String notes;
+    private UserEntity userEntity;
+
+    @Id
+    @Column(name = "User_Name")
+    public UserEntity getUserEntity() {
+        return userEntity;
+    }
+
+    public void setUserEntity(UserEntity userEntity) {
+        this.userEntity = userEntity;
+    }
+
 
     @Id
     @Column(name = "No")
-    public int getNo() {
+    public String getNo() {
         return no;
     }
 
-    public void setNo(int no) {
+    public void setNo(String no) {
         this.no = no;
     }
 
@@ -49,21 +61,21 @@ public class ComputerHostEntity {
 
     @Basic
     @Column(name = "Rom")
-    public Integer getRom() {
+    public String getRom() {
         return rom;
     }
 
-    public void setRom(Integer rom) {
+    public void setRom(String rom) {
         this.rom = rom;
     }
 
     @Basic
     @Column(name = "Ram")
-    public Integer getRam() {
+    public String getRam() {
         return ram;
     }
 
-    public void setRam(Integer ram) {
+    public void setRam(String ram) {
         this.ram = ram;
     }
 

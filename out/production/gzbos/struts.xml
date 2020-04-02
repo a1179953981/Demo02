@@ -41,12 +41,12 @@
             <result name="loginfailure">/login.jsp</result>
         </action>
 
-        <!--取派员模块-->
+        <!--员工模块-->
         <action name="staffAction_*" class="com.gyf.bos.web.action.StaffAction" method="{1}">
             <result name="success">/WEB-INF/pages/base/staff.jsp</result>
 
         </action>
-        <!--区域模块-->
+        <!--显示器模块-->
         <action name="regionAction_*" class="com.gyf.bos.web.action.RegionAction" method="{1}">
 
             <result name="success">/WEB-INF/pages/base/region.jsp</result>

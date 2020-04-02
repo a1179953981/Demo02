@@ -86,42 +86,80 @@
         }];
         // 定义列
         var columns = [[{
-            field: 'id',
-            checkbox: true,
-        }, {
-            field: 'showid',
-            title: '姓名',
-            width: 400,
-            align: 'center',
-            formatter: function (data, row, index) {
-                return row.id;
-            }
-        }, {
-            field: 'province',
-            title: '岗位',
-            width: 400,
-            align: 'center',
-            formatter: function (data, row, index) {
-                return row.region.province;
-            }
-        }, {
-            field: 'city',
-            title: '部门',
-            width: 400,
-            align: 'center',
-            formatter: function (data, row, index) {
-                return row.region.city;
-            }
-        }, {
-            field: 'district',
-            title: '入职日期',
-            width: 400,
-            align: 'center',
-            formatter: function (data, row, index) {
-                return row.region.district;
-            }
-        }]
-        ];
+                field: 'id',
+                checkbox: true,
+            }, {
+                field: 'no',
+                title: '编号',
+                width: 145,
+                align: 'center',
+            }, {
+                field: 'brand',
+                title: '品牌',
+                width: 145,
+                align: 'center'
+            }, {
+                field: 'cpu',
+                title: 'cpu',
+                width: 145,
+                align: 'center'
+            }, {
+                field: 'rom',
+                title: '硬盘',
+                width: 145,
+                align: 'center'
+            },
+                {
+                    field: 'ram',
+                    title: '内存',
+                    width: 145,
+                    align: 'center',
+                }, {
+                    field: 'type',
+                    title: '类型',
+                    width: 145,
+                    align: 'center',
+                }, {
+                    field: 'mac',
+                    title: 'mac地址',
+                    width: 145,
+                    align: 'center',
+                }, {
+                    field: 'status',
+                    title: '状态',
+                    width: 125,
+                    align: 'center',
+                    formatter: function (data, row, index) {
+                        if (row.status == 0) {
+                            return "空闲";
+                        } else
+                            return "已使用"
+                    }
+                }, {
+                    field: 'procurementDate',
+                    title: '采购日期',
+                    width: 145,
+                    align: 'center',
+                }, {
+                    field: 'userEntity.name',
+                    title: '使用人',
+                    width: 145,
+                    align: 'center',
+                    formatter: function (data, row, index) {
+                        if (row.userEntity != null) {
+                            return row.userEntity.name;
+                        } else
+                            return null
+                    }
+                }, {
+                    field: 'notes',
+                    title: '备注',
+                    width: 165,
+                    align: 'center',
+                }
+            ]
+            ]
+        ;
 
         //获取表彰的数据
         function getFormData(formId) {
@@ -150,7 +188,7 @@
                 rownumbers: true,
                 striped: true,
                 pageSize: 2,
-                pageList: [2, 4, 6],
+                pageList: [25,30,35],
                 pagination: true,
                 toolbar: toolbar,
                 url: "${pageContext.request.contextPath}/subareaAction_pageQuery.action",

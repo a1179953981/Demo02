@@ -3,5 +3,16 @@
     "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-
+    <class name="com.gyf.bos.model.MonitorEntity" table="Monitor" schema="asset">
+        <id name="no" column="No"/>
+        <property name="brand" column="brand"/>
+        <property name="size" column="Size"/>
+        <property name="note" column="Note"/>
+        <property name="starus" column="Starus"/>
+        <many-to-one name="userEntity"
+                     lazy="false"
+                     column="User_Name"
+                     not-found="ignore"
+                     class="com.gyf.bos.model.UserEntity"></many-to-one>
+    </class>
 </hibernate-mapping>

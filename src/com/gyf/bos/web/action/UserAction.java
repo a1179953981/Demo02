@@ -26,21 +26,23 @@ public class UserAction extends BaseAction<AdminEntity> {
         HttpServletRequest request =  ServletActionContext.getRequest();
         String serverCheckCode = (String) request.getSession().getAttribute("key");
         String clientCheckCode = request.getParameter("checkcode");
-        if(serverCheckCode.equalsIgnoreCase(clientCheckCode)){//验证码正确
-            //2.调用service
-            AdminEntity user= userService.login(admin,password);
-            //3.判断登录状态
-            if(user != null){
-                //System.out.println("登录成功");
-                request.getSession().setAttribute("loginUser",user);
-                return "home";//主页面-后台页面
-            }else{
-                //System.out.println("登录失败，用户名密码不正确");
-                addActionError("登录失败，用户名密码不正确");
+        if(serverCheckCode!=null&&clientCheckCode!=null) {
+            if (serverCheckCode.equalsIgnoreCase(clientCheckCode)) {//验证码正确
+                //2.调用service
+                AdminEntity user = userService.login(admin, password);
+                //3.判断登录状态
+                if (user != null) {
+                    //System.out.println("登录成功");
+                    request.getSession().setAttribute("loginUser", user);
+                    return "home";//主页面-后台页面
+                } else {
+                    //System.out.println("登录失败，用户名密码不正确");
+                    addActionError("登录失败，用户名密码不正确");
+                }
+            } else {
+                //System.out.println("验证码不正确");
+                addActionError("验证码不正确");
             }
-        }else{
-            //System.out.println("验证码不正确");
-            addActionError("验证码不正确");
         }
         return "loginfailure";
     }
