@@ -13,7 +13,7 @@ public class ComputerHostEntity {
     private String ram;
     private String type;
     private String mac;
-    private int status;
+    private String status;
     private String procurementDate;
     private String notes;
     private UserEntity userEntity;
@@ -101,11 +101,11 @@ public class ComputerHostEntity {
 
     @Basic
     @Column(name = "Status")
-    public int getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 

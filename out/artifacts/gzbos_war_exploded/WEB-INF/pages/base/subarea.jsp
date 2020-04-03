@@ -319,20 +319,20 @@
                     <td colspan="2">查询条件</td>
                 </tr>
                 <tr>
-                    <td>省</td>
-                    <td><input type="text" name="region.province"/></td>
+                    <td>编号</td>
+                    <td><input type="text" name="no"/></td>
                 </tr>
                 <tr>
-                    <td>市</td>
-                    <td><input type="text" name="region.city"/></td>
+                    <td>使用人</td>
+                    <td><input type="text" name="userEntity.name"/></td>
                 </tr>
                 <tr>
-                    <td>区（县）</td>
-                    <td><input type="text" name="region.district"/></td>
+                    <td>mac地址</td>
+                    <td><input type="text" name="mac"/></td>
                 </tr>
                 <tr>
-                    <td>关键字</td>
-                    <td><input type="text" name="addresskey"/></td>
+                    <td>类型</td>
+                    <td><input type="text" name="type"/></td>
                 </tr>
                 <tr>
                     <td colspan="2"><a id="searchBtn" href="#" class="easyui-linkbutton"

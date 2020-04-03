@@ -3,6 +3,7 @@ package com.gyf.bos.web.action;
 import com.gyf.bos.model.ComputerHostEntity;
 import com.gyf.bos.model.Region;
 import com.gyf.bos.model.Subarea;
+import com.gyf.bos.model.UserEntity;
 import com.gyf.bos.service.IRegionService;
 import com.gyf.bos.service.ISubareaService;
 import com.gyf.bos.utils.PinYin4jUtils;
@@ -57,51 +58,42 @@ public class SubareaAction extends BaseAction<ComputerHostEntity>{
     }
 
     public void pageQuery() throws IOException {
-//        pb.setCurrentPage(page);
-//        pb.setPageSize(rows);
-//
-//        //添加查询的条件
-//        DetachedCriteria dc = pb.getDetachedCriteria();//Subarea
-//       // addresskey:d
-//        String addresskey = getModel().getAddresskey();
-//        if(!StringUtils.isEmpty(addresskey)){
-//            dc.add(Restrictions.like("addresskey","%" + addresskey +"%"));
-//        }
-//
-//        Region region = getModel().getRegion();
-//        if(region != null){
-//            String province = region.getProvince();
-//            String city = region.getCity();
-//            String district = region.getDistrict();
-//            //region.province:a
-//            dc.createAlias("region","r");//创建一个别名
-//
-//            if(!StringUtils.isEmpty(province)){
-//                dc.add(Restrictions.like("r.province","%" + province + "%"));
-//            }
-//
-//            //region.city:b
-//            if(!StringUtils.isEmpty(city)){
-//                dc.add(Restrictions.like("r.city","%" + city + "%"));
-//            }
-//
-//            //region.district:c
-//            if(!StringUtils.isEmpty(district)){
-//                dc.add(Restrictions.like("r.district","%" + district + "%"));
-//            }
-//        }
-//
-//
-//
-//        //2.调用service,参数里传一个PageBean
-//        subareaService.pageQuery(pb);
-//        /**
-//         * 注意：获取数据时候，把分区Subarea的Region的加载方式设置为即时加载
-//         */
-//        //3.返回json数据
-//        responseJson(pb,new String[]{"currentPage","pageSize","detachedCriteria","subareas"});
-        //1.接收参数 page[当前页] rows[每页显示多少条]
-        //封装条件
+        pb.setCurrentPage(page);
+        pb.setPageSize(rows);
+
+        //添加查询的条件
+        DetachedCriteria dc = pb.getDetachedCriteria();//Subarea
+       // addresskey:d
+        String no = getModel().getNo();
+        if(!StringUtils.isEmpty(no)){
+            dc.add(Restrictions.like("no","%" + no +"%"));
+        }
+
+        UserEntity user = getModel().getUserEntity();
+        if(user != null){
+            String name = user.getName();
+            dc.createAlias("user","r");//创建一个别名
+
+            if(!StringUtils.isEmpty(name)){
+                dc.add(Restrictions.like("r.name","%" + name + "%"));
+            }
+        }
+        String mac = getModel().getMac();
+        if(!StringUtils.isEmpty(mac)){
+            dc.add(Restrictions.like("mac","%"+mac+"%"));
+        }
+
+
+
+        //2.调用service,参数里传一个PageBean
+        subareaService.pageQuery(pb);
+        /**
+         * 注意：获取数据时候，把分区Subarea的Region的加载方式设置为即时加载
+         */
+        //3.返回json数据
+        responseJson(pb,new String[]{"currentPage","pageSize","detachedCriteria","subareas"});
+//        1.接收参数 page[当前页] rows[每页显示多少条]
+//        封装条件
         pb.setCurrentPage(page);
         pb.setPageSize(rows);
 

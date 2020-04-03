@@ -59,6 +59,7 @@
 		var idsStr = ids.join(',');//连接字符串
 		alert(idsStr);
 
+
 		//2.访问staffAction_delete.action?ids=A01,A02,A03
 		$.post(
 		    '${pageContext.request.contextPath}/staffAction_delete.action',
@@ -168,7 +169,7 @@
 		
 		// 添加取派员窗口
 		$('#addStaffWindow').window({
-	        title: '添加取派员',
+	        title: '添加新员工',
 	        width: 400,
 	        modal: true,
 	        shadow: true,
@@ -242,35 +243,24 @@
 			<form id="addStaffForm" action="${pageContext.request.contextPath}/staffAction_save.action">
 				<table class="table-edit" width="80%" align="center">
 					<tr class="title">
-						<td colspan="2">收派员信息</td>
+						<td colspan="2">新员工信息</td>
 					</tr>
 					<!-- TODO 这里完善收派员添加 table -->
-					<tr>
-						<td>取派员编号</td>
-						<td><input type="text" name="id" class="easyui-validatebox" required="true"/></td>
-					</tr>
 					<tr>
 						<td>姓名</td>
 						<td><input type="text" name="name" class="easyui-validatebox" required="true"/></td>
 					</tr>
 					<tr>
-						<td>手机</td>
-						<td><input type="text" name="telephone" class="easyui-validatebox" required="true" data-options="validType:'phoneNumber'"/></td>
+						<td>职位</td>
+						<td><input type="text" name="position" class="easyui-validatebox" required="true"/></td>
 					</tr>
 					<tr>
-						<td>单位</td>
-						<td><input type="text" name="station" class="easyui-validatebox" required="true"/></td>
+						<td>所属部门</td>
+						<td><input type="text" name="departments" class="easyui-validatebox" required="true"/></td>
 					</tr>
 					<tr>
-						<td colspan="2">
-						<input type="checkbox" name="haspda" value="1" />
-						是否有PDA</td>
-					</tr>
-					<tr>
-						<td>取派标准</td>
-						<td>
-							<input type="text" name="standard" class="easyui-validatebox" required="true"/>  
-						</td>
+						<td>入职日期</td>
+						<td><input type="date" name="dateOfEntry" class="easyui-validatebox" required="true"/></td>
 					</tr>
 					</table>
 			</form>
