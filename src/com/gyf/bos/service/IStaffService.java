@@ -21,7 +21,7 @@ public interface IStaffService extends IBaseService<UserEntity>{
      * 批量删除取派员
      * @param ids 【001,002,003】 以豆号隔开
      */
-    public void deleteBatch(String ids);
+    public void delete(String ids);
 
     public List<UserEntity> findAllWithNoDelete();
 }

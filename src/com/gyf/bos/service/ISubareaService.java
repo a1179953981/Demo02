@@ -12,4 +12,5 @@ public interface ISubareaService extends IBaseService<ComputerHostEntity>{
     public void pageQuery(PageBean<ComputerHostEntity> pb);
 
     public List<ComputerHostEntity> findAllWithUnbind();
+    public void delete(String ids);
 }

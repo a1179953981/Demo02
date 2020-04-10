@@ -2,10 +2,7 @@ package com.gyf.bos.service.impl;
 
 import com.gyf.bos.dao.IRegionDao;
 import com.gyf.bos.dao.IStaffDao;
-import com.gyf.bos.model.MonitorEntity;
-import com.gyf.bos.model.PageBean;
-import com.gyf.bos.model.Region;
-import com.gyf.bos.model.Staff;
+import com.gyf.bos.model.*;
 import com.gyf.bos.service.IRegionService;
 import com.gyf.bos.service.IStaffService;
 import com.gyf.bos.service.base.BaseServiceImpl;
@@ -31,12 +28,22 @@ public class RegionServiceImpl extends BaseServiceImpl<MonitorEntity> implements
     }
 
     @Override
-    public void delete(MonitorEntity entity) {
-
+    public void delete(String ids) {
+        regionDao.delete(ids);
     }
 
     @Override
     public void update(MonitorEntity entity) {
+        MonitorEntity staff = regionDao.find(entity.getNo());
+
+        //2.更新数据库的数据
+        staff.setBrand(entity.getBrand());
+        staff.setNo(entity.getNo());
+        staff.setNote(entity.getNote());
+        staff.setSize(entity.getSize());
+        staff.setStarus(entity.getStarus());
+        staff.setUserEntity(entity.getUserEntity());
+        System.out.println("数据库：" + staff);
 
     }
 

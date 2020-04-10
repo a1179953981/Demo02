@@ -44,8 +44,8 @@ public class UserServiceImpl extends BaseServiceImpl<AdminEntity> implements IUs
     }
 
     @Override
-    public void delete(AdminEntity entity) {
-        userDao.delete(entity);
+    public void delete(String ids) {
+        userDao.delete(ids);
     }
 
     @Override

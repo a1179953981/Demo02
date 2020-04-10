@@ -179,7 +179,7 @@
 	}
 	// 版权信息
 	function showAbout(){
-		$.messager.alert("宅急送 v1.0","管理员邮箱: zqx@huaizhi.cn");
+		$.messager.alert("铠麒资产管理","管理员邮箱: 1179953981@qq.com");
 	}
 </script>
 </head>

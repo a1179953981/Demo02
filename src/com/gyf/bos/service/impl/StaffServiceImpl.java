@@ -26,6 +26,11 @@ public class StaffServiceImpl extends BaseServiceImpl<UserEntity> implements ISt
 
     @Autowired
     private IStaffDao staffDao;
+    private String ids;
+
+    public void setIds(String ids) {
+        this.ids = ids;
+    }
 
     @Override
     public void save(UserEntity entity) {
@@ -33,8 +38,8 @@ public class StaffServiceImpl extends BaseServiceImpl<UserEntity> implements ISt
     }
 
     @Override
-    public void delete(UserEntity entity) {
-        staffDao.delete(entity);
+    public void delete(String ids) {
+        staffDao.delete(ids);
     }
 
     @Override
@@ -68,18 +73,18 @@ public class StaffServiceImpl extends BaseServiceImpl<UserEntity> implements ISt
         staffDao.pageQuery(pb);
     }
 
-    @Override
-    public void deleteBatch(String ids) {
-        String hql = "UPDATE Staff SET deltag = ? WHERE id = ?";
-
-        //拆分id
-        String[] idsArr = ids.split(",");
-        for (String id : idsArr){
-            staffDao.executeUpdate(hql,"1",id);
-            //staffDao.executeUpdateByQueryName("staff.delete","1",id);
-        }
-
-    }
+//    @Override
+//    public void delete(String ids) {
+////        String hql = "UPDATE Staff SET deltag = ? WHERE id = ?";
+////
+////        //拆分id
+////        String[] idsArr = ids.split(",");
+////        for (String id : idsArr){
+////            staffDao.executeUpdate(hql,"1",id);
+////            //staffDao.executeUpdateByQueryName("staff.delete","1",id);
+////        }
+//
+//    }
 
     @Override
     public List<UserEntity> findAllWithNoDelete() {

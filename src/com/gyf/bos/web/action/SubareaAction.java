@@ -8,6 +8,7 @@ import com.gyf.bos.service.IRegionService;
 import com.gyf.bos.service.ISubareaService;
 import com.gyf.bos.utils.PinYin4jUtils;
 import com.gyf.bos.web.action.base.BaseAction;
+import org.apache.commons.collections.functors.NonePredicate;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -28,28 +29,43 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SubareaAction extends BaseAction<ComputerHostEntity>{
+public class SubareaAction extends BaseAction<ComputerHostEntity> {
 
     @Autowired
     private ISubareaService subareaService;
+
     @Override
     public String save() {
+//        ComputerHostEntity c=this.getModel();
 //        System.out.println("数据1:" + getModel());
-//        System.out.println("数据1:" + getModel().getBrand();
-//
-//        //调用service
-//        subareaService.save(getModel());
+        //调用service
+        subareaService.save(getModel());
         return SUCCESS;
     }
 
     @Override
     public String update() {
-        return null;
+        subareaService.update(getModel());
+        return SUCCESS;
+    }
+
+    //   根据id 删除
+    private String ids;
+    public void setIds(String ids) {
+        this.ids = ids;
     }
 
     @Override
     public String delete() throws IOException {
-        return null;
+        System.out.println("ids====================================================="+ids);
+
+        subareaService.delete(ids);
+
+        //响应
+        HttpServletResponse response = ServletActionContext.getResponse();
+        response.getWriter().write("success");
+
+        return NONE;
     }
 
     @Override
@@ -63,45 +79,51 @@ public class SubareaAction extends BaseAction<ComputerHostEntity>{
 
         //添加查询的条件
         DetachedCriteria dc = pb.getDetachedCriteria();//Subarea
-       // addresskey:d
+        // addresskey:d
         String no = getModel().getNo();
-        if(!StringUtils.isEmpty(no)){
-            dc.add(Restrictions.like("no","%" + no +"%"));
+        if (!StringUtils.isEmpty(no)) {
+            dc.add(Restrictions.like("no", "%" + no + "%"));
         }
 
         UserEntity user = getModel().getUserEntity();
-        if(user != null){
+        if (user != null) {
             String name = user.getName();
-            dc.createAlias("user","r");//创建一个别名
+//            dc.createAlias("user", "r");//创建一个别名
 
-            if(!StringUtils.isEmpty(name)){
-                dc.add(Restrictions.like("r.name","%" + name + "%"));
+            if (!StringUtils.isEmpty(name)) {
+                dc.add(Restrictions.like("userEntity.name", "%" + name + "%"));
             }
         }
         String mac = getModel().getMac();
-        if(!StringUtils.isEmpty(mac)){
-            dc.add(Restrictions.like("mac","%"+mac+"%"));
+        if (!StringUtils.isEmpty(mac)) {
+            dc.add(Restrictions.like("mac", "%" + mac + "%"));
+        }
+        String type = getModel().getType();
+        if (!StringUtils.isEmpty(type)) {
+            dc.add(Restrictions.like("type", "%" + type + "%"));
+        }
+        String status = getModel().getStatus();
+        if (!StringUtils.isEmpty(status)) {
+            dc.add(Restrictions.like("status", "%" + status + "%"));
         }
 
 
-
         //2.调用service,参数里传一个PageBean
         subareaService.pageQuery(pb);
-        /**
-         * 注意：获取数据时候，把分区Subarea的Region的加载方式设置为即时加载
-         */
+
         //3.返回json数据
-        responseJson(pb,new String[]{"currentPage","pageSize","detachedCriteria","subareas"});
+        responseJson(pb, new String[]{"currentPage", "pageSize", "detachedCriteria", "subareas"});
+        System.out.println();
 //        1.接收参数 page[当前页] rows[每页显示多少条]
 //        封装条件
-        pb.setCurrentPage(page);
-        pb.setPageSize(rows);
-
-        //2.调用service,参数里传一个PageBean
-        subareaService.pageQuery(pb);
-
-        //3.返回json数据
-        responseJson(pb,new String[]{"currentPage","pageSize","detachedCriteria"});
+//        pb.setCurrentPage(page);
+//        pb.setPageSize(rows);
+//
+//        //2.调用service,参数里传一个PageBean
+//        subareaService.pageQuery(pb);
+//
+//        //3.返回json数据
+//        responseJson(pb,new String[]{"currentPage","pageSize","detachedCriteria"});
 
     }
 

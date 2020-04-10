@@ -16,7 +16,7 @@ public interface IBaseDao<T> {
     public void save(T entity);
 
     //删
-    public void delete(T entity);
+    public void delete(String ids);
 
     //改
     public void update(T entity);

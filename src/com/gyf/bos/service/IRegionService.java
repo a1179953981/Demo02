@@ -17,5 +17,6 @@ public interface IRegionService extends IBaseService<MonitorEntity>{
      */
     public void pageQuery(PageBean<MonitorEntity> pb);
     public List<MonitorEntity> findAllWithNoDelete();
+    public void delete(String ids);
 
 }

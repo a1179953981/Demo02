@@ -29,7 +29,7 @@ public class DecidedzoneServiceImpl extends BaseServiceImpl<Decidedzone> impleme
     }
 
     @Override
-    public void delete(Decidedzone entity) {
+    public void delete(String ids) {
 
     }
 

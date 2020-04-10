@@ -4,6 +4,6 @@
 		{ "id":"113", "pId":"11", "name":"显示器资产表","page":"page_base_region.action"},
 		{ "id":"114", "pId":"11", "name":"电脑资产表", "page":"page_base_subarea.action"},
 		{ "id":"12", "pId":"0", "name":"账户设置"},
-		{ "id":"121", "pId":"12", "name":"修改密码" ,"page":"page_qupai_noticebill_add.action"},
-		{ "id":"122", "pId":"12", "name":"注销" ,"page":"page_qupai_quickworkorder.action"}
+		{ "id":"121", "pId":"12", "name":"修改密码" ,"page":""},
+		{ "id":"122", "pId":"12", "name":"注销" ,"page":""}
 ]

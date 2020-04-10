@@ -9,8 +9,10 @@ import com.gyf.bos.service.IUserService;
 import com.gyf.bos.web.action.base.BaseAction;
 import net.sf.json.JSONObject;
 import net.sf.json.JsonConfig;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.struts2.ServletActionContext;
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletRequest;
@@ -49,7 +51,7 @@ public class StaffAction extends BaseAction<UserEntity> {
         //1.获取删除的id
 
         //2.调用service
-        staffService.deleteBatch(ids);
+        staffService.delete(ids);
 
         //3.响应
         HttpServletResponse response = ServletActionContext.getResponse();
@@ -71,12 +73,29 @@ public class StaffAction extends BaseAction<UserEntity> {
         //封装条件
         pb.setCurrentPage(page);
         pb.setPageSize(rows);
+        DetachedCriteria dc = pb.getDetachedCriteria();
+        String name=getModel().getName();
+        if(!StringUtils.isEmpty(name)){
+            dc.add(Restrictions.like("name","%"+name+"%"));
+        }
+        String position=getModel().getPosition();
+        if(!StringUtils.isEmpty(position)){
+            dc.add(Restrictions.like("position","%"+position+"%"));
+        }
+        String departments=getModel().getDepartments();
+        if(!StringUtils.isEmpty(departments)){
+            dc.add(Restrictions.like("departments","%"+departments+"%"));
+        }
+        String dateOfEntry=getModel().getDateOfEntry();
+        if (!StringUtils.isEmpty(dateOfEntry)){
+            dc.add(Restrictions.like("dateOfEntry","%"+dateOfEntry+"%"));
+        }
 
         //2.调用service,参数里传一个PageBean
         staffService.pageQuery(pb);
 
         //3.返回json数据
-        responseJson(pb,new String[]{"currentPage","pageSize","detachedCriteria"});
+        responseJson(pb,new String[]{"currentPage","pageSize","detachedCriteria","staff"});
 
     }
 

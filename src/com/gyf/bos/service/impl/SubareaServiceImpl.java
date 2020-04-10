@@ -2,10 +2,7 @@ package com.gyf.bos.service.impl;
 
 import com.gyf.bos.dao.IRegionDao;
 import com.gyf.bos.dao.ISubareaDao;
-import com.gyf.bos.model.ComputerHostEntity;
-import com.gyf.bos.model.PageBean;
-import com.gyf.bos.model.Region;
-import com.gyf.bos.model.Subarea;
+import com.gyf.bos.model.*;
 import com.gyf.bos.service.IRegionService;
 import com.gyf.bos.service.ISubareaService;
 import com.gyf.bos.service.base.BaseServiceImpl;
@@ -25,19 +22,35 @@ public class SubareaServiceImpl extends BaseServiceImpl<ComputerHostEntity> impl
 
     @Autowired
     private ISubareaDao subareaDao;
+
     @Override
     public void save(ComputerHostEntity entity) {
         subareaDao.save(entity);
     }
 
     @Override
-    public void delete(ComputerHostEntity entity) {
+    public void delete(String ids) {
+        subareaDao.delete(ids);
 
     }
 
     @Override
     public void update(ComputerHostEntity entity) {
+        ComputerHostEntity subarea = subareaDao.find(entity.getNo());
 
+        //2.更新数据库的数据
+        subarea.setNo(entity.getNo());
+        subarea.setBrand(entity.getBrand());
+        subarea.setCpu(entity.getCpu());
+        subarea.setMac(entity.getMac());
+        subarea.setNotes(entity.getNotes());
+        subarea.setProcurementDate(entity.getProcurementDate());
+        subarea.setRam(entity.getRam());
+        subarea.setRom(entity.getRom());
+        subarea.setStatus(entity.getStatus());
+        subarea.setType(entity.getType());
+        subarea.setUserEntity(entity.getUserEntity());
+        System.out.println("数据库：" + subarea);
     }
 
     @Override
@@ -61,4 +74,5 @@ public class SubareaServiceImpl extends BaseServiceImpl<ComputerHostEntity> impl
         dc.add(Restrictions.isNull("decidedzone"));
         return subareaDao.findAllByDetachedCriteria(dc);
     }
+
 }

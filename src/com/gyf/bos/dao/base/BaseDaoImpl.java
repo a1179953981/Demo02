@@ -47,8 +47,13 @@ public class BaseDaoImpl<T> implements IBaseDao<T>{
     }
 
     @Override
-    public void delete(T entity) {
-        this.hibernateTemplate.delete(entity);
+    public void delete(String ids) {
+        String[] idsArr=ids.split(",");
+        for(String id : idsArr){
+            System.out.println("---------------------------------------");
+            this.hibernateTemplate.delete(find(id));
+
+        }
     }
 
     @Override
@@ -77,19 +82,19 @@ public class BaseDaoImpl<T> implements IBaseDao<T>{
 
     @Override
     public void executeUpdate(String hql, Object... objs) {
-        //获取session
-        Session session = hibernateTemplate.getSessionFactory().getCurrentSession();
-
-        //获取查询对象
-        //update User set password=? where id = ?;
-        Query query = session.createQuery(hql);
-
-        //设置参数
-        for(int i=0;i<objs.length;i++){
-            query.setParameter(i,objs[i]);
-        }
-        //执行
-        query.executeUpdate();
+//        //获取session
+//        Session session = hibernateTemplate.getSessionFactory().getCurrentSession();
+//
+//        //获取查询对象
+//        //update User set password=? where id = ?;
+//        Query query = session.createQuery(hql);
+//
+//        //设置参数
+//        for(int i=0;i<objs.length;i++){
+//            query.setParameter(i,objs[i]);
+//        }
+//        //执行
+//        query.executeUpdate();
 
     }
 

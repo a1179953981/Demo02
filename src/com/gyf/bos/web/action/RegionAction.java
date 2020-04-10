@@ -1,9 +1,6 @@
 package com.gyf.bos.web.action;
 
-import com.gyf.bos.model.MonitorEntity;
-import com.gyf.bos.model.PageBean;
-import com.gyf.bos.model.Region;
-import com.gyf.bos.model.Staff;
+import com.gyf.bos.model.*;
 import com.gyf.bos.service.IRegionService;
 import com.gyf.bos.service.IStaffService;
 import com.gyf.bos.utils.PinYin4jUtils;
@@ -16,6 +13,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.struts2.ServletActionContext;
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletResponse;
@@ -86,17 +84,33 @@ public class RegionAction extends BaseAction<MonitorEntity>{
 
     @Override
     public String save() {
-        return null;
+        regionService.save(getModel());
+        return SUCCESS;
     }
 
     @Override
     public String update() {
-        return null;
+
+        System.out.println("表单提交:" + getModel());
+        regionService.update(getModel());
+
+        return SUCCESS;
+    }
+    private String ids;
+
+    public void setIds(String ids) {
+        this.ids = ids;
     }
 
     @Override
     public String delete() throws IOException {
-        return null;
+        regionService.delete(ids);
+
+        //响应
+        HttpServletResponse response = ServletActionContext.getResponse();
+        response.getWriter().write("success");
+
+        return NONE;
     }
 
     @Override
@@ -106,16 +120,42 @@ public class RegionAction extends BaseAction<MonitorEntity>{
 
 
     public void pageQuery() throws IOException {
-        //1.接收参数 page[当前页] rows[每页显示多少条]
+//1.接收参数 page[当前页] rows[每页显示多少条]
         //封装条件
         pb.setCurrentPage(page);
         pb.setPageSize(rows);
+        DetachedCriteria dc = pb.getDetachedCriteria();
+        String no=getModel().getNo();
+        if(!StringUtils.isEmpty(no)){
+            dc.add(Restrictions.like("no","%"+no+"%"));
+        }
+        String brand=getModel().getBrand();
+        if(!StringUtils.isEmpty(brand)){
+            dc.add(Restrictions.like("brand","%"+brand+"%"));
+        }
+        String size=getModel().getSize();
+        if(!StringUtils.isEmpty(size)){
+            dc.add(Restrictions.like("size","%"+size+"%"));
+        }
+        UserEntity user = getModel().getUserEntity();
+        if (user != null) {
+            String name = user.getName();
+//            dc.createAlias("user", "r");//创建一个别名
+
+            if (!StringUtils.isEmpty(name)) {
+                dc.add(Restrictions.like("userEntity.name", "%" + name + "%"));
+            }
+        }
+        String starus=getModel().getStarus();
+        if (!StringUtils.isEmpty(starus)){
+            dc.add(Restrictions.like("starus","%"+starus+"%"));
+        }
 
         //2.调用service,参数里传一个PageBean
         regionService.pageQuery(pb);
 
         //3.返回json数据
-        responseJson(pb,new String[]{"currentPage","pageSize","detachedCriteria"});
+        responseJson(pb,new String[]{"currentPage","pageSize","detachedCriteria","region"});
 
     }
 
