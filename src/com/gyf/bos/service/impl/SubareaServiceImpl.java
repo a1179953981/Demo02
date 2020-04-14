@@ -38,19 +38,21 @@ public class SubareaServiceImpl extends BaseServiceImpl<ComputerHostEntity> impl
     public void update(ComputerHostEntity entity) {
         ComputerHostEntity subarea = subareaDao.find(entity.getNo());
 
-        //2.更新数据库的数据
-        subarea.setNo(entity.getNo());
-        subarea.setBrand(entity.getBrand());
-        subarea.setCpu(entity.getCpu());
-        subarea.setMac(entity.getMac());
-        subarea.setNotes(entity.getNotes());
-        subarea.setProcurementDate(entity.getProcurementDate());
-        subarea.setRam(entity.getRam());
-        subarea.setRom(entity.getRom());
-        subarea.setStatus(entity.getStatus());
-        subarea.setType(entity.getType());
-        subarea.setUserEntity(entity.getUserEntity());
-        System.out.println("数据库：" + subarea);
+//        //2.更新数据库的数据
+////        subarea.setTime(entity.getTime());
+//        subarea.setNo(entity.getNo());
+//        subarea.setBrand(entity.getBrand());
+//        subarea.setCpu(entity.getCpu());
+//        subarea.setMac(entity.getMac());
+//        subarea.setNotes(entity.getNotes());
+//        subarea.setProcurementDate(entity.getProcurementDate());
+//        subarea.setRam(entity.getRam());
+//        subarea.setRom(entity.getRom());
+//        subarea.setStatus(entity.getStatus());
+//        subarea.setType(entity.getType());
+//        subarea.setUserEntity(entity.getUserEntity());
+//        System.out.println("数据库：" + subarea);
+        subareaDao.executeUpdateByQueryName("update",entity.getNo(),entity.getBrand(),entity.getCpu(),entity.getRom(),entity.getRam(),entity.getType(),entity.getMac(),entity.getStatus(),entity.getProcurementDate(),entity.getNotes(),entity.getUserEntity().getName(),entity.getNo());
     }
 
     @Override

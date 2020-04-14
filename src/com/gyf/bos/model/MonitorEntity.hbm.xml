@@ -9,6 +9,7 @@
         <property name="size" column="Size"/>
         <property name="note" column="Note"/>
         <property name="starus" column="Starus"/>
+        <property name="data" column="data"/>
         <many-to-one name="userEntity"
                      lazy="false"
                      column="User_Name"

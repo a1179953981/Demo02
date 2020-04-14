@@ -39,13 +39,23 @@ public class SubareaAction extends BaseAction<ComputerHostEntity> {
 //        ComputerHostEntity c=this.getModel();
 //        System.out.println("数据1:" + getModel());
         //调用service
-        subareaService.save(getModel());
+        ComputerHostEntity computerHostEntity =getModel();
+        if(computerHostEntity.getUserEntity().getName().equals(""))
+        {
+            computerHostEntity.setUserEntity(null);
+        }
+        subareaService.save(computerHostEntity);
         return SUCCESS;
     }
 
     @Override
     public String update() {
-        subareaService.update(getModel());
+        ComputerHostEntity computerHostEntity =getModel();
+        if(computerHostEntity.getUserEntity().getName().equals(""))
+        {
+            computerHostEntity.setUserEntity(null);
+        }
+        subareaService.update(computerHostEntity);
         return SUCCESS;
     }
 

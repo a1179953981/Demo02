@@ -2,6 +2,7 @@ package com.gyf.bos.model;
 
 import javax.persistence.*;
 import java.util.Objects;
+//import java.util.Date;
 
 @Entity
 @Table(name = "computer_host", schema = "asset", catalog = "")
@@ -17,6 +18,17 @@ public class ComputerHostEntity {
     private String procurementDate;
     private String notes;
     private UserEntity userEntity;
+    private String time;
+
+    @Basic
+    @Column(name = "time")
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
 
     @Id
     @Column(name = "User_Name")
@@ -128,6 +140,7 @@ public class ComputerHostEntity {
     public void setNotes(String notes) {
         this.notes = notes;
     }
+
 
     @Override
     public boolean equals(Object o) {

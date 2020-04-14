@@ -59,18 +59,18 @@
 		});
 		
 		// 系统管理菜单加载
-		$.ajax({
-			url : '${pageContext.request.contextPath}/json/admin.json',
-			type : 'POST',
-			dataType : 'text',
-			success : function(data) {
-				var zNodes = eval("(" + data + ")");
-				$.fn.zTree.init($("#adminMenu"), setting, zNodes);
-			},
-			error : function(msg) {
-				alert('菜单加载异常!');
-			}
-		});
+		<%--$.ajax({--%>
+		<%--	url : '${pageContext.request.contextPath}/json/admin.json',--%>
+		<%--	type : 'POST',--%>
+		<%--	dataType : 'text',--%>
+		<%--	success : function(data) {--%>
+		<%--		var zNodes = eval("(" + data + ")");--%>
+		<%--		$.fn.zTree.init($("#adminMenu"), setting, zNodes);--%>
+		<%--	},--%>
+		<%--	error : function(msg) {--%>
+		<%--		alert('菜单加载异常!');--%>
+		<%--	}--%>
+		<%--});--%>
 		
 		// // 页面加载后 右下角 弹出窗口
 		// /**************/

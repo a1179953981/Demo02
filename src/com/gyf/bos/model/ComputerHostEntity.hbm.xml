@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE hibernate-mapping PUBLIC
-    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
     <class name="com.gyf.bos.model.ComputerHostEntity" table="computer_host" schema="asset">
@@ -15,10 +15,13 @@
         <property name="status" column="Status"/>
         <property name="procurementDate" column="Procurement_date"/>
         <property name="notes" column="Notes"/>
+        <property name="time" column="time"/>
         <many-to-one name="userEntity"
                      not-found="ignore"
                      lazy="false"
                      column="User_Name"
                      class="com.gyf.bos.model.UserEntity"></many-to-one>
+
     </class>
+    <query name="update">UPDATE ComputerHostEntity SET no=? ,brand=?,cpu=?,rom=?,ram=?,type=?,mac=?,status=?,procurementDate=?,notes=?,userEntity.name=? WHERE no = ?</query>
 </hibernate-mapping>

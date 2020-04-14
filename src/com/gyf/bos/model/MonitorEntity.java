@@ -79,6 +79,19 @@ public class MonitorEntity {
         this.starus = starus;
     }
 
+    private String data;
+
+    @Basic
+    @Column(name ="data")
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+
     @Override
     public String toString() {
         return "MonitorEntity{" +

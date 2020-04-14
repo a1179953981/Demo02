@@ -135,28 +135,28 @@
         }, {
             field: 'no',
             title: '编号',
-            width: 145,
+            width: 133,
             align: 'center',
         }, {
             field: 'brand',
             title: '品牌',
-            width: 145,
+            width: 133,
             align: 'center'
         }, {
             field: 'cpu',
             title: 'cpu',
-            width: 145,
+            width: 133,
             align: 'center'
         }, {
             field: 'rom',
             title: '硬盘',
-            width: 145,
+            width: 133,
             align: 'center'
         },
             {
                 field: 'ram',
                 title: '内存',
-                width: 145,
+                width: 133,
                 align: 'center',
             }, {
                 field: 'type',
@@ -166,12 +166,12 @@
             }, {
                 field: 'mac',
                 title: 'mac地址',
-                width: 145,
+                width: 133,
                 align: 'center',
             }, {
                 field: 'status',
                 title: '状态',
-                width: 125,
+                width: 133,
                 align: 'center',
                 // formatter: function (data, row, index) {
                 //     if (row.status == 0) {
@@ -182,12 +182,12 @@
             }, {
                 field: 'procurementDate',
                 title: '采购日期',
-                width: 145,
+                width: 133,
                 align: 'center',
             }, {
                 field: 'userEntity.name',
                 title: '使用人',
-                width: 145,
+                width: 133,
                 align: 'center',
                 formatter: function (data, row, index) {
                     if (row.userEntity != null) {
@@ -198,7 +198,13 @@
             }, {
                 field: 'notes',
                 title: '备注',
-                width: 165,
+                width: 145,
+                align: 'center',
+            },
+            {
+                field: 'time',
+                title: '更新时间',
+                width: 133,
                 align: 'center',
             }
         ]
@@ -283,7 +289,6 @@
             });
             //更新数据
             $("#update").click(function () {
-                alert("dianji")
                 //表单检验
                 var v = $("#editStaffForm").form('validate');
                 if (v) {
@@ -371,7 +376,7 @@
                 </tr>
                 <tr>
                     <td>mac地址</td>
-                    <td><input type="text" name="mac" class="easyui-validatebox" /></td>
+                    <td><input type="text" name="mac" class="easyui-validatebox"/></td>
                 </tr>
                 <tr>
                     <td>使用状态</td>
@@ -379,11 +384,11 @@
                 </tr>
                 <tr>
                     <td>采购日期</td>
-                    <td><input type="text" name="procurementDate" class="easyui-validatebox" /></td>
+                    <td><input type="text" name="procurementDate" class="easyui-validatebox"/></td>
                 </tr>
                 <tr>
                     <td>使用人</td>
-                    <td><input type="text" name="userEntity.name" class="easyui-validatebox" /></td>
+                    <td><input type="text" name="userEntity.name" class="easyui-validatebox"/></td>
                 </tr>
                 <tr>
                     <td>备注</td>
@@ -447,39 +452,39 @@
                 </tr>
                 <tr>
                     <td>编号</td>
-                    <td><input type="text" name="no" class="easyui-validatebox" /></td>
+                    <td><input type="text" name="no" class="easyui-validatebox"/></td>
                 </tr>
                 <tr>
                     <td>品牌</td>
-                    <td><input type="text" name="brand" class="easyui-validatebox" /></td>
+                    <td><input type="text" name="brand" class="easyui-validatebox"/></td>
                 </tr>
                 <tr>
                     <td>cpu</td>
-                    <td><input type="text" name="cpu" class="easyui-validatebox" /></td>
+                    <td><input type="text" name="cpu" class="easyui-validatebox"/></td>
                 </tr>
                 <tr>
                     <td>硬盘</td>
-                    <td><input type="text" name="rom" class="easyui-validatebox" /></td>
+                    <td><input type="text" name="rom" class="easyui-validatebox"/></td>
                 </tr>
                 <tr>
                     <td>内存</td>
-                    <td><input type="text" name="ram" class="easyui-validatebox" /></td>
+                    <td><input type="text" name="ram" class="easyui-validatebox"/></td>
                 </tr>
                 <tr>
                     <td>类型</td>
-                    <td><input type="text" name="type" class="easyui-validatebox" /></td>
+                    <td><input type="text" name="type" class="easyui-validatebox"/></td>
                 </tr>
                 <tr>
                     <td>mac地址</td>
-                    <td><input type="text" name="mac" class="easyui-validatebox" /></td>
+                    <td><input type="text" name="mac" class="easyui-validatebox"/></td>
                 </tr>
                 <tr>
                     <td>状态</td>
-                    <td><input type="text" name="status" class="easyui-validatebox" /></td>
+                    <td><input type="text" name="status" class="easyui-validatebox"/></td>
                 </tr>
                 <tr>
                     <td>采购日期</td>
-                    <td><input type="text" name="procurementDate" class="easyui-validatebox" /></td>
+                    <td><input type="text" name="procurementDate" class="easyui-validatebox"/></td>
                 </tr>
                 <tr>
                     <td>备注</td>
