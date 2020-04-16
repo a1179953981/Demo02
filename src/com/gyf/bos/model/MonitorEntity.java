@@ -79,16 +79,16 @@ public class MonitorEntity {
         this.starus = starus;
     }
 
-    private String data;
+    private String time;
 
     @Basic
-    @Column(name ="data")
-    public String getData() {
-        return data;
+    @Column(name = "time")
+    public String getTime() {
+        return time;
     }
 
-    public void setData(String data) {
-        this.data = data;
+    public void setTime(String time) {
+        this.time = time;
     }
 
 

@@ -1,9 +1,6 @@
 package com.gyf.bos.web.action;
 
-import com.gyf.bos.model.ComputerHostEntity;
-import com.gyf.bos.model.Region;
-import com.gyf.bos.model.Subarea;
-import com.gyf.bos.model.UserEntity;
+import com.gyf.bos.model.*;
 import com.gyf.bos.service.IRegionService;
 import com.gyf.bos.service.ISubareaService;
 import com.gyf.bos.utils.PinYin4jUtils;
@@ -39,20 +36,20 @@ public class SubareaAction extends BaseAction<ComputerHostEntity> {
 //        ComputerHostEntity c=this.getModel();
 //        System.out.println("数据1:" + getModel());
         //调用service
-        ComputerHostEntity computerHostEntity =getModel();
-        if(computerHostEntity.getUserEntity().getName().equals(""))
-        {
+        ComputerHostEntity computerHostEntity = getModel();
+        UserEntity userEntity=getModel().getUserEntity();
+        if (userEntity == null) {
             computerHostEntity.setUserEntity(null);
         }
         subareaService.save(computerHostEntity);
+
         return SUCCESS;
     }
 
     @Override
     public String update() {
-        ComputerHostEntity computerHostEntity =getModel();
-        if(computerHostEntity.getUserEntity().getName().equals(""))
-        {
+        ComputerHostEntity computerHostEntity = getModel();
+        if (computerHostEntity.getUserEntity().getName().equals("")) {
             computerHostEntity.setUserEntity(null);
         }
         subareaService.update(computerHostEntity);
@@ -61,13 +58,14 @@ public class SubareaAction extends BaseAction<ComputerHostEntity> {
 
     //   根据id 删除
     private String ids;
+
     public void setIds(String ids) {
         this.ids = ids;
     }
 
     @Override
     public String delete() throws IOException {
-        System.out.println("ids====================================================="+ids);
+        System.out.println("ids=====================================================" + ids);
 
         subareaService.delete(ids);
 

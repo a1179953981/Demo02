@@ -35,16 +35,27 @@ public class RegionServiceImpl extends BaseServiceImpl<MonitorEntity> implements
     @Override
     public void update(MonitorEntity entity) {
         MonitorEntity staff = regionDao.find(entity.getNo());
+//
 
-        //2.更新数据库的数据
-        staff.setBrand(entity.getBrand());
-        staff.setNo(entity.getNo());
-        staff.setNote(entity.getNote());
-        staff.setSize(entity.getSize());
-        staff.setStarus(entity.getStarus());
-        staff.setUserEntity(entity.getUserEntity());
-        System.out.println("数据库：" + staff);
+//        //2.更新数据库的数据
+////        subarea.setTime(entity.getTime());
+//        subarea.setNo(entity.getNo());
+//        subarea.setBrand(entity.getBrand());
+//        subarea.setCpu(entity.getCpu());
+//        subarea.setMac(entity.getMac());
+//        subarea.setNotes(entity.getNotes());
+//        subarea.setProcurementDate(entity.getProcurementDate());
+//        subarea.setRam(entity.getRam());
+//        subarea.setRom(entity.getRom());
+//        subarea.setStatus(entity.getStatus());
+//        subarea.setType(entity.getType());
+        if (entity.getUserEntity() != null) {
+            regionDao.executeUpdateByQueryName("updatee", entity.getNo(), entity.getBrand(), entity.getSize(), entity.getNote(), entity.getStarus(), entity.getUserEntity().getName(), entity.getNo());
+        }
+        else{
+            regionDao.executeUpdateByQueryName("updatee", entity.getNo(), entity.getBrand(), entity.getSize(), entity.getNote(), entity.getStarus(), null, entity.getNo());
 
+        }
     }
 
     @Override

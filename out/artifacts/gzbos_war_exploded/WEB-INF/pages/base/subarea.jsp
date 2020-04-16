@@ -315,6 +315,7 @@
         function doDblClickRow(rowIndex, rowData) {
             $('#editsubareaWindow').window("open");
             //
+            // alert(rowData.no)
             // //显示数据
             $('#editsubareaWindow').form("load", rowData);
         }
@@ -388,7 +389,7 @@
                 </tr>
                 <tr>
                     <td>使用人</td>
-                    <td><input type="text" name="userEntity.name" class="easyui-validatebox"/></td>
+                    <td><input type="text" name="name" class="easyui-validatebox"/></td>
                 </tr>
                 <tr>
                     <td>备注</td>

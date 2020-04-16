@@ -9,11 +9,13 @@
         <property name="size" column="Size"/>
         <property name="note" column="Note"/>
         <property name="starus" column="Starus"/>
-        <property name="data" column="data"/>
+        <property name="time" column="time"/>
         <many-to-one name="userEntity"
                      lazy="false"
                      column="User_Name"
                      not-found="ignore"
                      class="com.gyf.bos.model.UserEntity"></many-to-one>
     </class>
+    <query name="updatee">UPDATE MonitorEntity SET no=? ,brand=?,size=?,note=?,starus=?,userEntity.name=? WHERE no = ?</query>
+
 </hibernate-mapping>

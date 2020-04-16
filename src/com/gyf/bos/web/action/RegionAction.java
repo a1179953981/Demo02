@@ -85,16 +85,24 @@ public class RegionAction extends BaseAction<MonitorEntity>{
     @Override
     public String save() {
         regionService.save(getModel());
-        return SUCCESS;
+        return NONE;
     }
 
     @Override
     public String update() {
 
-        System.out.println("表单提交:" + getModel());
-        regionService.update(getModel());
+//        System.out.println("表单提交:" + getModel());
+//        regionService.update(getModel());
+//
+//        return SUCCESS;
+        MonitorEntity monitorEntity =getModel();
+        if(monitorEntity.getUserEntity().getName().equals(""))
+        {
+            monitorEntity.setUserEntity(null);
+        }
+        regionService.update(monitorEntity);
 
-        return SUCCESS;
+        return NONE;
     }
     private String ids;
 

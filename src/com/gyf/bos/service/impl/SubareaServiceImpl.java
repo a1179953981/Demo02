@@ -50,9 +50,13 @@ public class SubareaServiceImpl extends BaseServiceImpl<ComputerHostEntity> impl
 //        subarea.setRom(entity.getRom());
 //        subarea.setStatus(entity.getStatus());
 //        subarea.setType(entity.getType());
-//        subarea.setUserEntity(entity.getUserEntity());
-//        System.out.println("数据库：" + subarea);
-        subareaDao.executeUpdateByQueryName("update",entity.getNo(),entity.getBrand(),entity.getCpu(),entity.getRom(),entity.getRam(),entity.getType(),entity.getMac(),entity.getStatus(),entity.getProcurementDate(),entity.getNotes(),entity.getUserEntity().getName(),entity.getNo());
+        if (entity.getUserEntity() != null) {
+            subareaDao.executeUpdateByQueryName("update", entity.getNo(), entity.getBrand(), entity.getCpu(), entity.getRom(), entity.getRam(), entity.getType(), entity.getMac(), entity.getStatus(), entity.getProcurementDate(), entity.getNotes(), entity.getUserEntity().getName(), entity.getNo());
+        }
+        else{
+            subareaDao.executeUpdateByQueryName("update", entity.getNo(), entity.getBrand(), entity.getCpu(), entity.getRom(), entity.getRam(), entity.getType(), entity.getMac(), entity.getStatus(), entity.getProcurementDate(), entity.getNotes(),null, entity.getNo());
+
+        }
     }
 
     @Override
