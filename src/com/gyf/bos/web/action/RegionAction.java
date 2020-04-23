@@ -85,7 +85,7 @@ public class RegionAction extends BaseAction<MonitorEntity>{
     @Override
     public String save() {
         regionService.save(getModel());
-        return NONE;
+        return SUCCESS;
     }
 
     @Override
@@ -95,14 +95,9 @@ public class RegionAction extends BaseAction<MonitorEntity>{
 //        regionService.update(getModel());
 //
 //        return SUCCESS;
-        MonitorEntity monitorEntity =getModel();
-        if(monitorEntity.getUserEntity().getName().equals(""))
-        {
-            monitorEntity.setUserEntity(null);
-        }
-        regionService.update(monitorEntity);
+        regionService.update(getModel());
 
-        return NONE;
+        return SUCCESS;
     }
     private String ids;
 

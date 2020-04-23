@@ -34,7 +34,7 @@ public class RegionServiceImpl extends BaseServiceImpl<MonitorEntity> implements
 
     @Override
     public void update(MonitorEntity entity) {
-        MonitorEntity staff = regionDao.find(entity.getNo());
+//        MonitorEntity staff = regionDao.find(entity.getNo());
 //
 
 //        //2.更新数据库的数据
@@ -49,13 +49,7 @@ public class RegionServiceImpl extends BaseServiceImpl<MonitorEntity> implements
 //        subarea.setRom(entity.getRom());
 //        subarea.setStatus(entity.getStatus());
 //        subarea.setType(entity.getType());
-        if (entity.getUserEntity() != null) {
-            regionDao.executeUpdateByQueryName("updatee", entity.getNo(), entity.getBrand(), entity.getSize(), entity.getNote(), entity.getStarus(), entity.getUserEntity().getName(), entity.getNo());
-        }
-        else{
-            regionDao.executeUpdateByQueryName("updatee", entity.getNo(), entity.getBrand(), entity.getSize(), entity.getNote(), entity.getStarus(), null, entity.getNo());
-
-        }
+        regionDao.update(entity);
     }
 
     @Override

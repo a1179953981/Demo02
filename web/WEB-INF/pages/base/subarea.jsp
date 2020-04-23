@@ -40,6 +40,7 @@
             //alert("删除...");
             //1.获取所有删除的ID
             //获取所有选中的行
+
             var selectedRows = $("#grid").datagrid('getSelections');
 
             if (selectedRows.length == 0) {
@@ -369,9 +370,9 @@
                     <td>类型</td>
                     <td>
                         <select class="easyui-combobox" name="type" style="width:150px;">
-                            <option value="0">ZJ</option>
-                            <option value="1">lTJ</option>
-                            <option value="2">BJB</option>
+                            <option value="YR_ZJ">普通主机</option>
+                            <option value="YR_LTJ">一体机</option>
+                            <option value="YR_BJB">笔记本</option>
                         </select>
                     </td>
                 </tr>
@@ -389,7 +390,7 @@
                 </tr>
                 <tr>
                     <td>使用人</td>
-                    <td><input type="text" name="name" class="easyui-validatebox"/></td>
+                    <td><input type="text" name="userEntity.name" required="true" class="easyui-validatebox"/></td>
                 </tr>
                 <tr>
                     <td>备注</td>
@@ -493,7 +494,7 @@
                 </tr>
                 <tr>
                     <td>使用人</td>
-                    <td><input type="text" name="userEntity.name" class="easyui-validatebox"/></td>
+                    <td><input type="text" name="userEntity.name" required="true" class="easyui-validatebox"/></td>
                 </tr>
 
 

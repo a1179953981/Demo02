@@ -23,5 +23,4 @@
                      class="com.gyf.bos.model.UserEntity"></many-to-one>
 
     </class>
-    <query name="update">UPDATE ComputerHostEntity SET no=? ,brand=?,cpu=?,rom=?,ram=?,type=?,mac=?,status=?,procurementDate=?,notes=?,userEntity.name=? WHERE no = ?</query>
 </hibernate-mapping>

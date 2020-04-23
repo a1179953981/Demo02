@@ -36,7 +36,7 @@ public class SubareaServiceImpl extends BaseServiceImpl<ComputerHostEntity> impl
 
     @Override
     public void update(ComputerHostEntity entity) {
-        ComputerHostEntity subarea = subareaDao.find(entity.getNo());
+//        ComputerHostEntity subarea = subareaDao.find(entity.getNo());
 
 //        //2.更新数据库的数据
 ////        subarea.setTime(entity.getTime());
@@ -50,13 +50,7 @@ public class SubareaServiceImpl extends BaseServiceImpl<ComputerHostEntity> impl
 //        subarea.setRom(entity.getRom());
 //        subarea.setStatus(entity.getStatus());
 //        subarea.setType(entity.getType());
-        if (entity.getUserEntity() != null) {
-            subareaDao.executeUpdateByQueryName("update", entity.getNo(), entity.getBrand(), entity.getCpu(), entity.getRom(), entity.getRam(), entity.getType(), entity.getMac(), entity.getStatus(), entity.getProcurementDate(), entity.getNotes(), entity.getUserEntity().getName(), entity.getNo());
-        }
-        else{
-            subareaDao.executeUpdateByQueryName("update", entity.getNo(), entity.getBrand(), entity.getCpu(), entity.getRom(), entity.getRam(), entity.getType(), entity.getMac(), entity.getStatus(), entity.getProcurementDate(), entity.getNotes(),null, entity.getNo());
-
-        }
+        subareaDao.update(entity);
     }
 
     @Override

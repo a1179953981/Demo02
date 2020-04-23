@@ -16,6 +16,4 @@
                      not-found="ignore"
                      class="com.gyf.bos.model.UserEntity"></many-to-one>
     </class>
-    <query name="updatee">UPDATE MonitorEntity SET no=? ,brand=?,size=?,note=?,starus=?,userEntity.name=? WHERE no = ?</query>
-
 </hibernate-mapping>

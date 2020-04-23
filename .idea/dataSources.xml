@@ -21,5 +21,25 @@
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://203.195.135.48:3306</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="hibernate.cfg.xml/Hibernate" uuid="f3c2f447-68b4-449d-8413-88226b1d7b47">
+      <driver-ref>mysql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>Hibernate
+
+D:/Users/yonrun1001/IdeaProjects/Demo/config/hibernate.cfg.xml</remarks>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://203.195.135.48:3306</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="dataSource" uuid="60e0a316-d039-4b3e-913c-fc7c6189002d">
+      <driver-ref>mysql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>c3p0
+
+D:/Users/yonrun1001/IdeaProjects/Demo/config/beans.xml</remarks>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://203.195.135.48:3306/asset?useUnicode=true&amp;characterEncoding=utf8</jdbc-url>
+    </data-source>
   </component>
 </project>

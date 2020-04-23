@@ -113,22 +113,22 @@
         }, {
             field: 'no',
             title: 'No',
-            width: 266,
+            width: 228,
             align: 'center'
         }, {
             field: 'brand',
             title: '品牌',
-            width: 266,
+            width: 228,
             align: 'center'
         }, {
             field: 'size',
             title: '尺寸',
-            width: 266,
+            width: 228,
             align: 'center'
         }, {
             field: 'userEntity.name',
             title: '使用人',
-            width: 266,
+            width: 228,
             align: 'center',
             formatter: function (data, row, index) {
                 if (row.userEntity != null) {
@@ -143,14 +143,20 @@
         }, {
             field: 'starus',
             title: '状态',
-            width: 220,
+            width: 150,
             align: 'center'
         }, {
             field: 'note',
             title: '备注',
-            width: 476,
+            width: 228,
             align: 'center'
-        }]];
+        },{
+            field: 'time',
+            title: '更新时间',
+            width: 278,
+            align: 'center'
+        }
+        ]];
 
         $(function () {
             //获取表彰的数据
@@ -307,7 +313,7 @@
                 </tr>
                 <tr>
                     <td>使用人</td>
-                    <td><input type="text" name="userEntity.name" class="easyui-validatebox"/></td>
+                    <td><input type="text" name="userEntity.name" class="easyui-validatebox" required="true"/></td>
                 </tr>
                 <tr>
                     <td>状态</td>
@@ -350,7 +356,7 @@
                 </tr>
                 <tr>
                     <td>使用人</td>
-                    <td><input type="text" name="userEntity.name"/></td>
+                    <td><input type="text" name="userEntity.name" class="easyui-validatebox" required="true"/></td>
                 </tr>
                 <tr>
                     <td>状态</td>

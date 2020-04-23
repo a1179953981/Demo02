@@ -313,7 +313,7 @@
                 </tr>
                 <tr>
                     <td>使用人</td>
-                    <td><input type="text" name="userEntity.name" class="easyui-validatebox"/></td>
+                    <td><input type="text" name="userEntity.name" class="easyui-validatebox" required="true"/></td>
                 </tr>
                 <tr>
                     <td>状态</td>
@@ -356,7 +356,7 @@
                 </tr>
                 <tr>
                     <td>使用人</td>
-                    <td><input type="text" name="userEntity.name"/></td>
+                    <td><input type="text" name="userEntity.name" class="easyui-validatebox" required="true"/></td>
                 </tr>
                 <tr>
                     <td>状态</td>
