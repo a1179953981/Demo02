@@ -411,7 +411,7 @@
                 </tr>
                 <tr>
                     <td>编号</td>
-                    <td><input type="text" name="no"/></td>
+                    <td><input type="text" name="no" /></td>
                 </tr>
                 <tr>
                     <td>使用人</td>
@@ -454,7 +454,7 @@
                 </tr>
                 <tr>
                     <td>编号</td>
-                    <td><input type="text" name="no" class="easyui-validatebox"/></td>
+                    <td><input type="text" name="no" class="easyui-validatebox" required="true" readonly="true"/></td>
                 </tr>
                 <tr>
                     <td>品牌</td>
